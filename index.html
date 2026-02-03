@@ -1,0 +1,453 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>5Б класс 43 школы</title>
+    <style>
+        :root {
+            --primary-black: #000000;
+            --primary-white: #ffffff;
+            --gray-light: #f5f5f5;
+            --gray-medium: #e0e0e0;
+            --gray-dark: #333333;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 6px 20px rgba(0, 0, 0, 0.12);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--primary-black);
+            background-color: var(--primary-white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        header {
+            background-color: var(--primary-black);
+            color: var(--primary-white);
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
+        }
+
+        .mh {
+            margin: 0;
+            font-size: 1.8em;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--primary-white);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+            position: relative;
+        }
+
+            nav a:hover {
+                background-color: rgba(255, 255, 255, 0.1);
+                transform: translateY(-2px);
+            }
+
+            nav a::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 0;
+                height: 2px;
+                background-color: var(--primary-white);
+                transition: width 0.3s ease;
+            }
+
+            nav a:hover::after {
+                width: 70%;
+            }
+
+        section {
+            padding: 40px 5%;
+            border-bottom: 1px solid var(--gray-medium);
+        }
+
+        #main {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(to bottom, var(--primary-white) 0%, var(--gray-light) 100%);
+            border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+            margin-bottom: 30px;
+        }
+
+        .h {
+            color: var(--primary-black);
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+        }
+
+            .h::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 60px;
+                height: 3px;
+                background-color: var(--primary-black);
+                border-radius: 3px;
+            }
+
+        #main h2 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        #main p {
+            font-size: 1.3em;
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--gray-dark);
+        }
+
+        article {
+            margin-bottom: 30px;
+            padding: 25px;
+            border: 1px solid var(--gray-medium);
+            border-radius: var(--radius-md);
+            background-color: var(--primary-white);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+            article:hover {
+                box-shadow: var(--shadow-hover);
+                transform: translateY(-5px);
+            }
+
+        h3 {
+            font-size: 1.5em;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+            ul li {
+                margin-bottom: 10px;
+                padding-left: 10px;
+                position: relative;
+            }
+
+                ul li::before {
+                    content: '•';
+                    position: absolute;
+                    left: -10px;
+                    color: var(--primary-black);
+                    font-weight: bold;
+                }
+
+        a {
+            color: var(--primary-black);
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid transparent;
+            transition: var(--transition);
+            padding-bottom: 2px;
+        }
+
+            a:hover {
+                color: var(--gray-dark);
+                border-bottom: 2px solid var(--primary-black);
+            }
+
+        details {
+            margin-top: 15px;
+            border: 1px solid var(--gray-medium);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            background-color: var(--primary-white);
+        }
+
+        summary {
+            font-weight: 600;
+            cursor: pointer;
+            padding: 15px;
+            background-color: var(--gray-light);
+            transition: var(--transition);
+            list-style: none;
+            position: relative;
+            padding-right: 40px;
+        }
+
+
+            summary::marker {
+                display: none;
+                content: '';
+            }
+
+
+            summary::after {
+                content: '▼';
+                position: absolute;
+                right: 15px;
+                top: 50%;
+                transform: translateY(-50%);
+                font-size: 0.8em;
+                transition: transform 0.3s ease;
+                text-align: center;
+                width: 20px;
+                height: 20px;
+                line-height: 20px;
+                border-radius: 50%;
+                background-color: rgba(0, 0, 0, 0.1);
+            }
+
+        details[open] summary::after {
+            transform: translateY(-50%) rotate(180deg);
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+
+        summary:hover {
+            background-color: var(--gray-medium);
+        }
+
+            summary:hover::after {
+                background-color: rgba(0, 0, 0, 0.15);
+            }
+
+        details[open] summary {
+            border-bottom: 1px solid var(--gray-medium);
+            background-color: var(--gray-medium);
+        }
+
+        details div {
+            padding: 20px;
+            margin: 0;
+        }
+
+        time {
+            display: block;
+            font-style: italic;
+            margin-bottom: 10px;
+            color: var(--gray-dark);
+            font-size: 0.9em;
+            background-color: var(--gray-light);
+            padding: 5px 10px;
+            border-radius: var(--radius-sm);
+            width: fit-content;
+        }
+
+        footer {
+            background-color: var(--primary-black);
+            color: var(--primary-white);
+            text-align: center;
+            padding: 40px 20px;
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+        }
+
+        .fp {
+            margin: 0 0 20px 0;
+            font-size: 1.1em;
+        }
+
+        footer a {
+            color: var(--primary-white);
+            border-bottom: 1px solid transparent;
+            padding: 8px 16px;
+            border-radius: var(--radius-sm);
+            background-color: rgba(255, 255, 255, 0.1);
+            display: inline-block;
+            transition: var(--transition);
+        }
+
+            footer a:hover {
+                color: var(--primary-white);
+                background-color: rgba(255, 255, 255, 0.2);
+                border-bottom: 1px solid var(--primary-white);
+                transform: translateY(-2px);
+            }
+
+        details[open] {
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0.8;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+
+            nav ul {
+                justify-content: center;
+                gap: 15px;
+            }
+
+            #main h2 {
+                font-size: 2.2em;
+            }
+
+            #main p {
+                font-size: 1.1em;
+            }
+
+            section {
+                padding: 30px 20px;
+            }
+
+            article {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .mh {
+                font-size: 1.5em;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            nav a {
+                display: block;
+                text-align: center;
+            }
+
+            #main {
+                padding: 50px 15px;
+            }
+
+                #main h2 {
+                    font-size: 1.8em;
+                }
+
+            summary {
+                padding: 12px;
+                padding-right: 35px;
+                font-size: 0.95em;
+            }
+
+                summary::after {
+                    right: 10px;
+                }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="mh">5Б класс школы №43</h1>
+        <nav>
+            <ul>
+                <li><a href="#main">Главная</a></li>
+                <li><a href="#about">О классе</a></li>
+                <li><a href="#news">Новости</a></li>
+                <li><a href="#gallery">Галерея</a></li>
+                <li><a href="#materials">Материалы</a></li>
+                <li><a href="#schedule">Расписание</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="main">
+        <h2 class="h">Добро пожаловать на сайт 5Б класса</h2>
+        <p>Мы — самый успешный и послушный класс в мире! (но это не точно)</p>
+    </section>
+    <section id="about">
+        <article>
+            <h3 class="h">Наш классный руководитель:</h3>
+            <p><b>Шафоростова Дарья Александровна</b></p>
+        </article>
+        <article>
+            <h2 class="h">Список класса:</h2>
+            <details>
+                <summary>Показать список класса...</summary>
+                <div>
+                    <ul>
+                        <li>Барабанщиков Аскольд</li>
+                        <li>Бюркланд Диана</li>
+                        <li>Горбушин Кирилл</li>
+                        <li>Дюжев Тихон</li>
+                        <li>Ермолов Михаил</li>
+                        <li>Ефремова Мария (суба братик мой)</li>
+                    </ul>
+                </div>
+            </details>
+        </article>
+        <article>
+            <h3 class="h">Наши достижения:</h3>
+            <ul>
+                <li><a href="https://t.me/Laminativanovich" target="_blank">Предложить достижения</a></li>
+            </ul>
+        </article>
+    </section>
+    <section id="news">
+        <h3 class="h">Новости</h3>
+        <article>
+            <time datetime="2026-02-02">2 февраля 2026</time>
+            <p>СЕГОДНЯ МЕТЁЛКА СОВЕРШАЛА НЕМЫСЛЕМЫЕ ПОЛЁТЫ ПО КЛАССУ</p>
+        </article>
+    </section>
+    <section id="schedule">
+        <h2 class="h">Расписание</h2>
+        <p><a href="https://drive.google.com/drive/folders/1BOOUiX07gc6mnYPrkqua7piRe_whAsZi" target="_blank">Посмотреть расписание здесь</a></p>
+    </section>
+    <section id="gallery">
+        <h2 class="h">Галерея</h2>
+        <p><a href="https://t.me/Laminativanovich" target="_blank">Предложить фото для галереи</a></p>
+    </section>
+    <section id="materials">
+        <h2 class="h">Материалы</h2>
+        <ul>
+            <li><a href="https://school43.krl.eduru.ru/?mobile=0" target="_blank">Официальный сайт школы</a></li>
+        </ul>
+    </section>
+    <footer>
+        <p class="fp">Сайт 5Б класса. Школа №43</p>
+        <a href="https://t.me/Laminativanovich" target="_blank">Сообщить об ошибке</a>
+    </footer>
+</body>
+</html>

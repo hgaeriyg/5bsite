@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>5Б класс 43 школы</title>
     <style>
         :root {
@@ -17,36 +17,26 @@
             --radius-md: 12px;
             --radius-lg: 20px;
             --transition: all 0.3s ease;
-            --safe-area: env(safe-area-inset-bottom, 20px);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            -webkit-text-size-adjust: 100%;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: var(--primary-black);
             background-color: var(--primary-white);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            text-rendering: optimizeLegibility;
-            overflow-x: hidden;
         }
 
         header {
             background-color: var(--primary-black);
             color: var(--primary-white);
-            padding: 16px 5%;
+            padding: 20px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -55,93 +45,66 @@
             top: 0;
             z-index: 100;
             box-shadow: var(--shadow);
-            min-height: 60px;
         }
 
         .mh {
             margin: 0;
-            font-size: clamp(1.3rem, 4vw, 1.8rem);
+            font-size: 1.8em;
             font-weight: 700;
-            letter-spacing: -0.3px;
-            line-height: 1.2;
-            text-align: center;
-            width: 100%;
-            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
             color: var(--primary-white);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+            position: relative;
         }
 
-        nav {
-            width: 100%;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-            padding-bottom: 5px;
-        }
-
-            nav::-webkit-scrollbar {
-                display: none;
-            }
-
-            nav ul {
-                list-style: none;
-                margin: 0;
-                padding: 0;
-                display: flex;
-                gap: 12px;
-                min-width: min-content;
-                white-space: nowrap;
-            }
-
-            nav li {
-                flex-shrink: 0;
-            }
-
-            nav a {
-                color: var(--primary-white);
-                text-decoration: none;
-                font-weight: 600;
-                padding: 10px 14px;
-                border-radius: var(--radius-sm);
-                transition: var(--transition);
-                position: relative;
-                font-size: 0.95rem;
-                display: inline-block;
-                background-color: rgba(255, 255, 255, 0.05);
-                min-height: 40px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-                nav a:active {
-                    background-color: rgba(255, 255, 255, 0.15);
-                    transform: scale(0.98);
-                }
-
-        @media (hover: hover) {
             nav a:hover {
                 background-color: rgba(255, 255, 255, 0.1);
                 transform: translateY(-2px);
             }
-        }
+
+            nav a::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 0;
+                height: 2px;
+                background-color: var(--primary-white);
+                transition: width 0.3s ease;
+            }
+
+            nav a:hover::after {
+                width: 70%;
+            }
 
         section {
-            padding: 30px 5%;
+            padding: 40px 5%;
             border-bottom: 1px solid var(--gray-medium);
-            scroll-margin-top: 70px;
         }
 
         #main {
             text-align: center;
-            padding: 60px 20px;
-            background: linear-gradient(135deg, var(--primary-white) 0%, var(--gray-light) 100%);
+            padding: 80px 20px;
+            background: linear-gradient(to bottom, var(--primary-white) 0%, var(--gray-light) 100%);
             border-radius: 0 0 var(--radius-lg) var(--radius-lg);
-            margin-bottom: 20px;
-            min-height: calc(100vh - 200px);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            margin-bottom: 30px;
         }
 
         .h {
@@ -150,17 +113,13 @@
             margin-bottom: 25px;
             position: relative;
             display: inline-block;
-            font-size: clamp(1.5rem, 5vw, 2rem);
-            width: 100%;
-            text-align: center;
         }
 
             .h::after {
                 content: '';
                 position: absolute;
                 bottom: 0;
-                left: 50%;
-                transform: translateX(-50%);
+                left: 0;
                 width: 60px;
                 height: 3px;
                 background-color: var(--primary-black);
@@ -168,64 +127,48 @@
             }
 
         #main h2 {
-            font-size: clamp(1.8rem, 6vw, 3rem);
+            font-size: 3em;
             margin-bottom: 20px;
             font-weight: 800;
-            line-height: 1.2;
-            color: var(--primary-black);
         }
 
         #main p {
-            font-size: clamp(1rem, 3vw, 1.3rem);
+            font-size: 1.3em;
             max-width: 700px;
             margin: 0 auto;
             color: var(--gray-dark);
-            padding: 0 10px;
         }
 
         article {
-            margin-bottom: 20px;
-            padding: 20px;
+            margin-bottom: 30px;
+            padding: 25px;
             border: 1px solid var(--gray-medium);
             border-radius: var(--radius-md);
             background-color: var(--primary-white);
             box-shadow: var(--shadow);
             transition: var(--transition);
-            width: 100%;
         }
 
-            article:active {
-                transform: scale(0.99);
-            }
-
-        @media (hover: hover) {
             article:hover {
                 box-shadow: var(--shadow-hover);
                 transform: translateY(-5px);
             }
-        }
 
         h3 {
-            font-size: clamp(1.2rem, 4vw, 1.5rem);
+            font-size: 1.5em;
             margin-top: 0;
             margin-bottom: 15px;
             font-weight: 700;
-            line-height: 1.3;
-            color: var(--primary-black);
         }
 
         ul {
             padding-left: 20px;
-            margin: 15px 0;
         }
 
             ul li {
-                margin-bottom: 12px;
+                margin-bottom: 10px;
                 padding-left: 10px;
                 position: relative;
-                line-height: 1.5;
-                font-size: clamp(0.95rem, 3vw, 1rem);
-                color: var(--primary-black);
             }
 
                 ul li::before {
@@ -234,7 +177,6 @@
                     left: -10px;
                     color: var(--primary-black);
                     font-weight: bold;
-                    font-size: 1.2em;
                 }
 
         a {
@@ -244,21 +186,12 @@
             border-bottom: 2px solid transparent;
             transition: var(--transition);
             padding-bottom: 2px;
-            word-break: break-word;
-            display: inline-block;
-            max-width: 100%;
         }
 
-            a:active {
-                opacity: 0.8;
-            }
-
-        @media (hover: hover) {
             a:hover {
                 color: var(--gray-dark);
                 border-bottom: 2px solid var(--primary-black);
             }
-        }
 
         details {
             margin-top: 15px;
@@ -266,65 +199,58 @@
             border-radius: var(--radius-sm);
             overflow: hidden;
             background-color: var(--primary-white);
-            width: 100%;
         }
 
         summary {
             font-weight: 600;
             cursor: pointer;
-            padding: 16px;
+            padding: 15px;
             background-color: var(--gray-light);
             transition: var(--transition);
             list-style: none;
             position: relative;
-            padding-right: 50px;
-            font-size: clamp(1rem, 3vw, 1.1rem);
-            min-height: 56px;
-            display: flex;
-            align-items: center;
-            -webkit-user-select: none;
-            user-select: none;
-            color: var(--primary-black);
+            padding-right: 40px;
         }
 
-            summary {
+
+            summary::marker {
                 display: none;
+                content: '';
             }
+
 
             summary::after {
                 content: '▼';
                 position: absolute;
-                right: 16px;
+                right: 15px;
                 top: 50%;
                 transform: translateY(-50%);
                 font-size: 0.8em;
                 transition: transform 0.3s ease;
                 text-align: center;
-                width: 24px;
-                height: 24px;
-                line-height: 24px;
+                width: 20px;
+                height: 20px;
+                line-height: 20px;
                 border-radius: 50%;
                 background-color: rgba(0, 0, 0, 0.1);
-                color: var(--primary-black);
             }
-
-            summary:active {
-                background-color: var(--gray-medium);
-            }
-
-        @media (hover: hover) {
-            summary:hover {
-                background-color: var(--gray-medium);
-            }
-        }
 
         details[open] summary::after {
             transform: translateY(-50%) rotate(180deg);
             background-color: rgba(0, 0, 0, 0.2);
         }
 
+        summary:hover {
+            background-color: var(--gray-medium);
+        }
+
+            summary:hover::after {
+                background-color: rgba(0, 0, 0, 0.15);
+            }
+
         details[open] summary {
             border-bottom: 1px solid var(--gray-medium);
+            background-color: var(--gray-medium);
         }
 
         details div {
@@ -335,14 +261,13 @@
         time {
             display: block;
             font-style: italic;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             color: var(--gray-dark);
             font-size: 0.9em;
             background-color: var(--gray-light);
-            padding: 8px 12px;
+            padding: 5px 10px;
             border-radius: var(--radius-sm);
             width: fit-content;
-            max-width: 100%;
         }
 
         footer {
@@ -350,46 +275,30 @@
             color: var(--primary-white);
             text-align: center;
             padding: 40px 20px;
-            padding-bottom: calc(40px + var(--safe-area));
             border-radius: var(--radius-lg) var(--radius-lg) 0 0;
         }
 
         .fp {
-            margin: 0 0 25px 0;
-            font-size: clamp(1rem, 3vw, 1.1rem);
-            line-height: 1.5;
-            padding: 0 10px;
-            color: var(--primary-white);
+            margin: 0 0 20px 0;
+            font-size: 1.1em;
         }
 
         footer a {
             color: var(--primary-white);
             border-bottom: 1px solid transparent;
-            padding: 14px 24px;
+            padding: 8px 16px;
             border-radius: var(--radius-sm);
             background-color: rgba(255, 255, 255, 0.1);
             display: inline-block;
             transition: var(--transition);
-            font-size: 1rem;
-            min-height: 48px;
-            min-width: 200px;
-            max-width: 90%;
-            margin: 0 auto;
         }
 
-            footer a:active {
-                background-color: rgba(255, 255, 255, 0.2);
-                transform: scale(0.98);
-            }
-
-        @media (hover: hover) {
             footer a:hover {
                 color: var(--primary-white);
                 background-color: rgba(255, 255, 255, 0.2);
                 border-bottom: 1px solid var(--primary-white);
                 transform: translateY(-2px);
             }
-        }
 
         details[open] {
             animation: fadeIn 0.3s ease;
@@ -405,158 +314,83 @@
             }
         }
 
-        /* Улучшения для очень маленьких экранов */
-        @media (max-width: 360px) {
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+
+            nav ul {
+                justify-content: center;
+                gap: 15px;
+            }
+
+            #main h2 {
+                font-size: 2.2em;
+            }
+
+            #main p {
+                font-size: 1.1em;
+            }
+
             section {
-                padding: 25px 4%;
+                padding: 30px 20px;
             }
 
             article {
-                padding: 16px;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .mh {
+                font-size: 1.5em;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
             }
 
             nav a {
-                padding: 8px 12px;
-                font-size: 0.9rem;
-            }
-
-            summary {
-                padding: 14px;
-                padding-right: 45px;
-            }
-        }
-
-        /* Улучшения для планшетов */
-        @media (min-width: 768px) {
-            header {
-                padding: 20px 5%;
-                flex-direction: row;
-            }
-
-            .mh {
-                width: auto;
-                margin-bottom: 0;
-                text-align: left;
-            }
-
-            nav {
-                width: auto;
-                overflow-x: visible;
-            }
-
-                nav ul {
-                    gap: 20px;
-                }
-
-            section {
-                padding: 40px 8%;
+                display: block;
+                text-align: center;
             }
 
             #main {
-                padding: 80px 40px;
-            }
-        }
-
-        /* Предотвращение масштабирования при двойном тапе на iOS */
-        @media (max-width: 768px) {
-            button,
-            a,
-            input,
-            textarea,
-            select {
-                font-size: 16px !important;
-            }
-        }
-
-        /* Анимация загрузки для слабых устройств */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-        header {
-            background-color: var(--primary-black);
-            color: var(--primary-white);
-            padding: 16px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: nowrap; /* Изменено с wrap на nowrap */
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: var(--shadow);
-            min-height: 60px;
-            overflow-x: auto; /* Добавлено для скролла */
-            -webkit-overflow-scrolling: touch; /* Плавный скролл на iOS */
-            scrollbar-width: none; /* Скрыть скроллбар в Firefox */
-        }
-
-            /* Скрыть скроллбар в Chrome/Safari */
-            header::-webkit-scrollbar {
-                display: none;
+                padding: 50px 15px;
             }
 
-        .mh {
-            margin: 0;
-            font-size: clamp(1.3rem, 4vw, 1.8rem);
-            font-weight: 700;
-            letter-spacing: -0.3px;
-            line-height: 1.2;
-            text-align: center;
-            width: 100%;
-            margin-bottom: 10px;
-            color: var(--primary-white);
-            flex-shrink: 0; /* Запретить сжатие заголовка */
-        }
+                #main h2 {
+                    font-size: 1.8em;
+                }
 
-        /* Добавить контейнер для заголовка и навигации */
-        .header-container {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            min-width: max-content; /* Минимальная ширина по содержимому */
-            padding-right: 20px;
-        }
-
-        nav {
-            flex-shrink: 0; /* Запретить сжатие навигации */
-        }
-
-            nav ul {
-                list-style: none;
-                margin: 0;
-                padding: 0;
-                display: flex;
-                gap: 12px;
-                min-width: min-content;
-                white-space: nowrap;
+            summary {
+                padding: 12px;
+                padding-right: 35px;
+                font-size: 0.95em;
             }
 
-            nav li {
-                flex-shrink: 0;
-            }
-
-        /* Убрал автоматическую темную тему, оставил только светлую */
+                summary::after {
+                    right: 10px;
+                }
+        }
     </style>
 </head>
 <body>
     <header>
-        <div class="header-container">
-            <h1 class="mh">5Б класс школы №43</h1>
-            <nav>
-                <ul>
-                    <li><a href="#main">Главная</a></li>
-                    <li><a href="#about">О классе</a></li>
-                    <li><a href="#news">Новости</a></li>
-                    <li><a href="#gallery">Галерея</a></li>
-                    <li><a href="#materials">Материалы</a></li>
-                    <li><a href="#schedule">Расписание</a></li>
-                </ul>
-            </nav>
-        </div>
+        <h1 class="mh">5Б класс школы №43</h1>
+        <nav>
+            <ul>
+                <li><a href="#main">Главная</a></li>
+                <li><a href="#about">О классе</a></li>
+                <li><a href="#news">Новости</a></li>
+                <li><a href="#gallery">Галерея</a></li>
+                <li><a href="#materials">Материалы</a></li>
+                <li><a href="#schedule">Расписание</a></li>
+            </ul>
+        </nav>
     </header>
     <section id="main">
         <h2 class="h">Добро пожаловать на сайт 5Б класса</h2>
@@ -586,7 +420,7 @@
         <article>
             <h3 class="h">Наши достижения:</h3>
             <ul>
-                <li><a href="https://t.me/Laminativanovich" target="_blank" rel="noopener">Предложить достижения</a></li>
+                <li><a href="https://t.me/Laminativanovich" target="_blank">Предложить достижения</a></li>
             </ul>
         </article>
     </section>
@@ -599,69 +433,21 @@
     </section>
     <section id="schedule">
         <h2 class="h">Расписание</h2>
-        <p><a href="https://drive.google.com/drive/folders/1BOOUiX07gc6mnYPrkqua7piRe_whAsZi" target="_blank" rel="noopener">Посмотреть расписание здесь</a></p>
+        <p><a href="https://drive.google.com/drive/folders/1BOOUiX07gc6mnYPrkqua7piRe_whAsZi" target="_blank">Посмотреть расписание здесь</a></p>
     </section>
     <section id="gallery">
         <h2 class="h">Галерея</h2>
-        <p><a href="https://t.me/Laminativanovich" target="_blank" rel="noopener">Предложить фото для галереи</a></p>
+        <p><a href="https://t.me/Laminativanovich" target="_blank">Предложить фото для галереи</a></p>
     </section>
     <section id="materials">
         <h2 class="h">Материалы</h2>
         <ul>
-            <li><a href="https://school43.krl.eduru.ru/?mobile=0" target="_blank" rel="noopener">Официальный сайт школы</a></li>
+            <li><a href="https://school43.krl.eduru.ru/?mobile=0" target="_blank">Официальный сайт школы</a></li>
         </ul>
     </section>
     <footer>
         <p class="fp">Сайт 5Б класса. Школа №43</p>
-        <a href="https://t.me/Laminativanovich" target="_blank" rel="noopener">Сообщить об ошибке</a>
+        <a href="https://t.me/Laminativanovich" target="_blank">Сообщить об ошибке</a>
     </footer>
-
-    <script>
-        // Улучшение работы на мобильных устройствах
-        document.addEventListener('DOMContentLoaded', function() {
-        // Предотвращение масштабирования при быстром клике
-        let lastTouchEnd = 0;
-        document.addEventListener('touchend', function(event) {
-        const now = Date.now();
-        if (now - lastTouchEnd <= 300) {
-        event.preventDefault();
-        }
-        lastTouchEnd = now;
-        }, false);
-
-        // Улучшение работы details/summary на мобильных
-        const details = document.querySelectorAll('details');
-        details.forEach(detail => {
-        detail.addEventListener('touchstart', function() {
-        this.style.transition = 'all 0.3s ease';
-        });
-        });
-
-        // Плавный скролл для якорных ссылок
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-        e.preventDefault();
-        const headerHeight = document.querySelector('header').offsetHeight;
-        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-
-        window.scrollTo({
-        top: targetPosition,
-        behavior: 'smooth'
-        });
-        }
-        });
-        });
-
-        // Оптимизация для iOS
-        if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
-        document.body.style.cursor = 'pointer';
-        }
-        });
-    </script>
 </body>
 </html>

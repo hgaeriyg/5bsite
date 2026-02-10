@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+Disallow: /private/
+Disallow: /admin/
+
+Sitemap: https://hgaeriyg.github.io/5bsite/sitemap.xml
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Yandex
+Allow: /
+Disallow: /cgi-bin
+
+User-agent: Bingbot
+Allow: /
